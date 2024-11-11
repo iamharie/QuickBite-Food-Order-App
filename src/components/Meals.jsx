@@ -1,5 +1,6 @@
 // import { Linter } from "eslint";
 import { useEffect, useState } from "react";
+import MealItem from "./MealItem";
 
 export default function Meals() {
   const [isFetching, setIsFetching] = useState(false);
@@ -29,7 +30,7 @@ export default function Meals() {
   return (
     <ul id="meals">
       {data.map((meals) => (
-        <li key={meals.id}>{meals.name}</li>
+        <MealItem key={meals.id} meal={meals} />
       ))}
     </ul>
   );
