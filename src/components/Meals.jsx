@@ -1,4 +1,3 @@
-// import { Linter } from "eslint";
 import { useEffect, useState } from "react";
 import MealItem from "./MealItem";
 
