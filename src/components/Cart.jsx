@@ -18,6 +18,10 @@ export default function Cart() {
   function handleCloseCart() {
     hideCart();
   }
+
+  //display checkout button only if items are added to the cart
+  const checkItemsAddedToCart = items.length >= 1;
+
   return (
     <Modal className="cart" open={progress === "cart"}>
       <h2>Your Cart</h2>
@@ -38,7 +42,12 @@ export default function Cart() {
         <Button textOnly={true} onClick={handleCloseCart}>
           Close
         </Button>
-        <Button className="">Checkout</Button>
+
+        {checkItemsAddedToCart && (
+          <Button className="" onClick={handleCloseCart}>
+            Checkout
+          </Button>
+        )}
       </p>
     </Modal>
   );
