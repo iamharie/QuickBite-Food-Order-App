@@ -44,9 +44,9 @@ function cartReducer(state, action) {
     } else {
       const updatedItem = {
         ...existingCartItem,
-        quantity: existingCartItem - 1,
+        quantity: existingCartItem.quantity - 1,
       };
-      updatedItems[existingCartItem] = updatedItem;
+      updatedItems[existingCartItemIndex] = updatedItem;
     }
 
     return { ...state, items: updatedItems };
@@ -67,7 +67,7 @@ export function CartContextProvider({ children }) {
 
   function removeItem(id) {
     //Logic
-    dispatch({
+    dispatchCartAction({
       type: "REMOVE_ITEM",
       id: id,
     });
