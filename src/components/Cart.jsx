@@ -8,13 +8,13 @@ import CartItem from "./CartItem";
 
 export default function Cart() {
   const { items, addItem, removeItem } = useContext(CartContext);
-  const { progress, hideCart } = useContext(UserProgressContext);
+  const { progress, hideCart, showCheckout } = useContext(UserProgressContext);
   const cartTotal = items.reduce(
     (totalPrice, item) => totalPrice + item.quantity * item.price,
     0
   );
 
-  //close modal
+  //close the cart modal
   function handleCloseCart() {
     hideCart();
   }
@@ -22,8 +22,17 @@ export default function Cart() {
   //display checkout button only if items are added to the cart
   const checkItemsAddedToCart = items.length >= 1;
 
+  //To Open Checkout form
+  function handleGoToCheckout() {
+    showCheckout();
+  }
+
   return (
-    <Modal className="cart" open={progress === "cart"}>
+    <Modal
+      className="cart"
+      open={progress === "cart"}
+      onClose={progress === "cart" ? handleCloseCart : null}
+    >
       <h2>Your Cart</h2>
       <ul>
         {items.map((item) => (
@@ -44,7 +53,7 @@ export default function Cart() {
         </Button>
 
         {checkItemsAddedToCart && (
-          <Button className="" onClick={handleCloseCart}>
+          <Button className="" onClick={handleGoToCheckout}>
             Checkout
           </Button>
         )}
