@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <header id="main-header">
       <div id="title">
-        <img src={logo} alt="QuickBite Logo" />
+        <img src={logo} alt="QuickBite - Logo" />
         <h1>Quick Bite</h1>
       </div>
       <nav>
