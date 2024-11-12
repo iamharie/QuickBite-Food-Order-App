@@ -22,16 +22,27 @@ export default function Checkout() {
   function handleForm(e) {
     e.preventDefault();
     const fd = new FormData(e.target);
-    const formData = Object.fromEntries(fd.entries(fd));
-    console.log(formData);
-    e.target.reset();
+    const customerData = Object.fromEntries(fd.entries(fd));
+
+    fetch("http://localhost:3000/orders", {
+      method: "POST",
+      body: JSON.stringify({
+        order: {
+          items: items,
+          customer: customerData,
+        },
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    console.log(customerData);
   }
   return (
     <Modal open={progress === "checkout"} onClose={hideCheckout}>
       <form onSubmit={handleForm}>
         <h2>Checkout</h2>
         <p>Total Amount: {currencyFormatter.format(cartTotal)} </p>
-        <Input label="Full Name" id="full-name" type="text" />
+        <Input label="Full Name" id="name" type="text" />
         <Input label="E-Mail Address" id="email" type="email" />
         <Input label="Street" id="street" type="text" />
         <div className="control-row">
