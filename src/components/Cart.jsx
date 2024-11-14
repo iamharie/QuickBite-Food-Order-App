@@ -55,7 +55,7 @@ export default function Cart() {
         {checkItemsAddedToCart && (
           <Button className="" onClick={handleGoToCheckout}>
             Checkout
-          </Button>
+         </Button>          
         )}
       </p>
     </Modal>
