@@ -1,5 +1,6 @@
-//Function call and fetch HTTP && payload if required!
-
+// Function call and fetch HTTP && payload if required!
+// Function call and fetch HTTP && payload if required!
+// Function call and fetch HTTP && payload if required!
 import { useCallback, useEffect, useState } from "react";
 
 async function sentHttpRequest(url, config) {
@@ -12,9 +13,14 @@ async function sentHttpRequest(url, config) {
   return resData;
 }
 
+
+
 export default function useHttp(url, config, initialData) {
+  //loading
   const [isLoading, setIsLoading] = useState(false);
+  //Error
   const [error, setError] = useState();
+  //Data
   const [data, setData] = useState(initialData);
 
   function clearData() {
