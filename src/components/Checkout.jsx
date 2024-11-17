@@ -93,7 +93,7 @@ export default function Checkout() {
       <Modal open={progress === "checkout"} onClose={handleFinish}>
         <h2>Order Placed!</h2>
         <p>Sit back and relax...</p>
-        <p>We will get back to you via email in a few minutes</p>
+        <p>We will get back shortly via message!</p>
         <p className="modal-actions">
           <Button onClick={handleFinish}>Close</Button>
         </p>
